@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+	<style>
+	  table,
+	  td {
+      border: 1px solid #333;
+	  border-collapse: collapse;
+	  }	  
+  </style>
+</head>
+  <title> Form </title>
+  <body>
+
+	<script type="text/javascript" src="popup.js"></script>
+	Firstname
+	<input type="text" id ="firstname"/>
+	<br>
+	Name
+	<input type="text" id ="name"/>
+	<br>
+	Age
+	<input type="number" id ="age"/>
+	<br>
+	Phone
+	<input type="tel" id ="phone"/>
+	<br>
+	Email
+	<input type="email" id ="email"/>
+	<br>
+	Student at 42 ? :
+	<input type="checkbox" id="student"/>
+	<br>
+	
+	Male <input type="radio" name="gender" value="Male" id="gender_male" />
+	Female <input type="radio" name="gender" value="Female" id="gender_female" />
+	Other <input type="radio" name="gender" value="Other" id="gender_other" />
+<br>
+
+
+<button type="button" onclick="displayFormContents()">Run that sexy Javascript!</button> 
+
+  </body>
+</html>
+	
