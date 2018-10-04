@@ -1,0 +1,5 @@
+name = "Bird"
+firstname = "Person"
+age = "42"
+profession = "chomage"
+title = "myCV"

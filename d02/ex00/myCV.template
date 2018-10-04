@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+	<head>
+<title>{title}</title>
+	</head>
+<body>
+<h3>{name} {firstname}</h3>
+<br>
+{age} ans.
+<br>
+curently {profession}
+</body>
