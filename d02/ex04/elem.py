@@ -112,8 +112,4 @@ if __name__ == '__main__':
                     ])
                 ])
     print(html)
-    gg = str(Text('<'))
-    if gg == '&lt;':
-        print('ok')
-    else:
-        print('ko')
+
