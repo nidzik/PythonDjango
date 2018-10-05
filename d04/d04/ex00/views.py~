@@ -1,0 +1,8 @@
+from django.shortcuts import render
+from django.http import HttpResponse
+from django.template.loader import render_to_string
+
+def index(request):
+    return render(request, 'ex00/index.html')
+#    return HttpResponse("<!DOCTYPE html>\n<html lang=\"fr\">\n<head><title>hi</title></head><body># H1## H2### H3#### H4##### H5###### H6 Alternatively, for H1 and H2, an underline-ish style:Alt-H1======Alt-H2------H1H2H3H4H5H6Hello, world. You're at the polls index.<div class=\"markdownx row\">    <div class=\"col-md-6\">        <!-- Django 1.10 and below -->        {{ markdownx_editor }}        <!-- Django 1.11+ -->      {% include 'django/forms/widgets/textarea.html' %}    </div>    <div class=\"col-md-6\">         <div class=\"markdownx-preview\"></div>    </div></div></body>")
+# Create your views here.
