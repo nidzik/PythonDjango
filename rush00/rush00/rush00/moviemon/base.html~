@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <title>{% block title %}Moviemon{% endblock %}</title>
+  <style>
+
+  </style>
+</head>
+<body>
+<div>
+coucou
+{% block image %}{% endblock %}
+</div>
+</body>

@@ -1,0 +1,6 @@
+./bin/pip install --target local_lib Django==1.9
+python3 local_lib/django/bin/django-admin.py startproject rush00
+python3 manage.py startapp moviemon
+
+
+

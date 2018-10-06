@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+
+{% block title %}Moviemon_start_page{% endblock %}
+
+{% block bgimage %}
+{% load static %}
+url("{% static 'map.png' %}");
+{% endblock %}
