@@ -1,0 +1,51 @@
+{% extends "ex00/base.html" %} 
+
+{% block sty %}
+
+.gg {
+	 border-width:1px;
+	border-style:solid;
+ 	border-color:red;
+
+ }
+th{
+ 	border-width:1px;
+	border-style:solid;
+ 	border-color:black;
+}
+td{
+	border-width:1px;
+ 	border-style:solid;
+ 	border-color:black;
+}
+{% endblock %}
+
+
+{% block content %} 
+{% include "ex00/nav.html" %}
+
+<h1>Your publications</h1>
+{% if user.is_authenticated %}
+<table class="gg">
+  <th>Title</th>
+  <th>Synopsis</th>
+  <th>Creation date</th>
+
+  {% for article in object_list %}
+  {% if article.author == user %} 
+  <tr>
+
+	<!-- par defaut, le parametre passe dans l'url ci-dessous doit s'appeler pk ou slug -->
+	<td><a href="{% url 'detail' pk=article.id %}">{{ article.title }}</a></td> 
+	<td>{{ article.title }}</td>
+	<td>{{ article.synopsis }}</td>
+	<td>{{ article.created|date }}</td>
+	    </tr>
+      {% endif %}
+  {% endfor %}
+</table>
+{% else %}
+Restricted area, please login
+{% endif %}
+
+{% endblock %} 

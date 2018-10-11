@@ -1,0 +1,43 @@
+{% extends "ex00/base.html" %} 
+
+{% block sty %}
+
+.gg { 
+ border-width:1px;
+ border-style:solid; 
+ border-color:red;
+
+ }
+th{
+ border-width:1px;
+ border-style:solid; 
+ border-color:black;
+}
+td{
+ border-width:1px;
+ border-style:solid; 
+ border-color:black;
+}
+{% endblock %}
+
+
+{% block content %} 
+{% include "ex00/nav.html" %}
+<h1>Articless</h1>
+<table class="gg"'>
+  <th>Title</th>
+  <th>Synopsis</th>
+  <th>Writer</th>
+  <th>Created</th>
+<!--  <th>When</th> 
+  <th></th>-->
+  {% for article in object_list %}
+  <tr>
+<td><a href="{% url 'detail' pk=article.id %}">{{ article.title }}</a></td>	
+		<td>{{ article.synopsis }}</td>
+		<td>{{ article.author }}</td>
+		<td>{{ article.created|date }}</td>
+  {% endfor %}
+</table>
+
+{% endblock %} 
