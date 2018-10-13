@@ -1,0 +1,60 @@
+{% extends "account/base.html" %}
+
+{% block sty %}
+<script src="https://code.jquery.com/jquery-1.10.2.js"> </script>
+{% load staticfiles %}
+<link rel="stylesheet" href="{% static "index.css" %}">
+{% endblock %}
+
+
+{% block headlines %}
+Login
+{% endblock %}
+{% block content %}
+
+{% if form.errors %}
+<p>Your username and password didn't match. Please try again.</p>
+{% endif %}
+
+{% if next %}
+    {% if user.is_authenticated %}
+    <p>Your account doesn't have access to this page. To proceed,
+    please login with an account that has access.</p>
+    {% else %}
+    <p>Please login.</p>
+    {% endif %}
+{% endif %}
+
+	<form method="POST" action="/login1/"  id="pf">
+	  <script type="text/javascript">
+		console.log("Dom ");
+		
+		$( document ).ready(function() {
+		console.log("Dom is loaded");
+		$('#pf').on('submit', function(event){
+		event.preventDefault();
+		console.log("form submitted!")  // sanity check
+		
+		});
+		})
+
+	  </script>
+	  
+{% csrf_token %}
+<table>
+<tr>
+    <td>{{ form.username.label_tag }}</td>
+    <td>{{ form.username }}</td>
+</tr>
+<tr>
+    <td>{{ form.password.label_tag }}</td>
+    <td>{{ form.password }}</td>
+</tr>
+</table>
+
+<input type="submit" value="login" />
+<input type="hidden" name="next" value="{{ next }}" />
+</form>
+
+
+{% endblock %}

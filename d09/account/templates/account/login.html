@@ -1,0 +1,82 @@
+{% extends "account/base.html" %}
+{% load staticfiles %}
+
+{% block sty %}
+<style>
+<script src="https://code.jquery.com/jquery-1.10.2.js"> </script>
+<link rel="stylesheet" href="{% static "index.css" %}">
+</style>
+{% endblock %}
+
+
+{% block headlines %}
+Login
+{% endblock %}
+{% block content %}
+
+{% if user.is_authenticated %}
+hi {{ user }}
+{% else %}
+<p id="name">hi anaonymous</p>
+{% endif %}
+
+
+{% if form.errors %}
+<p>Your username and password didn't match. Please try again.</p>
+{% endif %}
+
+{% if next %}
+    {% if user.is_authenticated %}
+    <p>Your account doesn't have access to this page. To proceed,
+    please login with an account that has access.</p>
+    {% else %}
+    <p>Please login.</p>
+    {% endif %}
+{% endif %}
+
+	<form method="POST" action="/login1/"  id="pf">
+	  {% csrf_token %}
+	  <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+	  <script type="text/javascript"> <!--src="http://code.jquery.com/jquery-1.11.0.min.js"> -->
+		console.log("Dom ");
+		
+		console.log("Dom is loaded");
+		$('#pf').on('submit', function(event){
+		event.preventDefault();
+		console.log("form submitted!")  // sanity check
+		$.ajax({
+		type: "POST",
+		url: "/login/",
+		dataType: "json",
+		data: {"_token": "{{ csrf_token }}",
+		"element": $('#name').text() },
+		success: function(data) {
+		console.log("succes")  // sanity check
+		$('#name').text(data.new);
+		alert('old title was ' + data.old );
+		}
+		});
+		<!--loginin()-->
+		});
+
+
+	  </script>
+	  
+
+<table>
+<tr>
+    <td>{{ form.username.label_tag }}</td>
+    <td>{{ form.username }}</td>
+</tr>
+<tr>
+    <td>{{ form.password.label_tag }}</td>
+    <td>{{ form.password }}</td>
+</tr>
+</table>
+
+<input type="submit" value="login" />
+<input type="hidden" name="next" value="{{ next }}" />
+</form>
+
+
+{% endblock %}

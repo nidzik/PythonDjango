@@ -1,0 +1,47 @@
+<!DOCTYPE>
+<meta charset="UTF-8">
+<head>
+<script src="https://code.jquery.com/jquery-1.10.2.js">	</script>
+{% load staticfiles %}
+<link rel="stylesheet" href="{% static "index.css" %}">
+</head>
+<html>
+<body>
+<h1 id="title">hello</h1>
+<button id='changet'>change title</button>
+<p id='changeb'>change backgrd</p>
+<script type="text/javascript">
+$( document ).ready(function() {
+	console.log("Dom is loaded");
+
+
+	$('#title').text('world');
+$('#changet').click(function(){
+	$.ajax({
+type: "POST",
+url: "/ajax/get_element/",
+dataType: "json",
+data: {"element": $('#title').text() },
+success: function(data) {
+$('#title').text(data.new);
+alert('old title was ' + data.old );
+}
+});
+    console.log("ajx completed");
+
+		<!--$('#title').text('helloworld') -->
+	});
+	$('#changeb').hover(function(event){
+		if (event.type == "mouseenter"){
+			$('body').css("background-color","blue");
+		}
+		else{
+			$('body').css("background-color", "white");
+		}
+	})
+})
+</script>
+</body>
+
+
+</html>
